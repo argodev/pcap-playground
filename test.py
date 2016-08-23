@@ -42,9 +42,11 @@ with open(test_file, "rb") as f:
         if header.network == LinkTypes.LINKTYPE_ETHERNET:
             packet = EthernetPacket(packet_data_bytes, header.little_endian)
             packet.print_details()
+            packet.process_layer_three()
 
         # get the header for the next packet
         packet_header_bytes = f.read(16)
+        #break
 
 
 print "Total Packets: " + str(pkt_count)
