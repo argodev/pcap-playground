@@ -1,49 +1,84 @@
 # coding: utf-8
 
-class LinkTypes(object):
+LINKTYPE_NULL = 0
+LINKTYPE_ETHERNET = 1
+LINKTYPE_AX25 = 3
+LINKTYPE_IEEE802_5 = 6
+LINKTYPE_ARCNET_BSD = 7
+LINKTYPE_SLIP = 8
+LINKTYPE_PPP = 9
+LINKTYPE_FDDI = 10
+LINKTYPE_PPP_HDLC = 50
+LINKTYPE_PPP_ETHER = 51
+LINKTYPE_ATM_RFC1483 = 100
+LINKTYPE_RAW = 101
+LINKTYPE_C_HDLC = 104
+LINKTYPE_IEEE802_11 = 105
+LINKTYPE_FRELAY = 107
+LINKTYPE_LOOP = 108
+LINKTYPE_LINUX_SLL = 113
+LINKTYPE_LTALK = 114
+LINKTYPE_PFLOG = 117
+LINKTYPE_IEEE802_11_PRISM = 119
+LINKTYPE_IP_OVER_FC = 122
+LINKTYPE_SUNATM = 123
+LINKTYPE_IEEE802_11_RADIOTAP = 127
+LINKTYPE_ARCNET_LINUX = 129
+LINKTYPE_APPLE_IP_OVER_IEEE1394 = 138
+LINKTYPE_MTP2_WITH_PHDR = 139
+LINKTYPE_MTP2 = 140
+LINKTYPE_MTP3 = 141
+LINKTYPE_SCCP = 142
+LINKTYPE_DOCSIS = 143
+LINKTYPE_LINUX_IRDA = 144
+LINKTYPE_IEEE802_11_AVS = 163
+LINKTYPE_BACNET_MS_TP = 165
+LINKTYPE_PPP_PPPD = 166
+LINKTYPE_GPRS_LLC = 169
+LINKTYPE_GPF_T = 170
+LINKTYPE_GPF_F = 171
+LINKTYPE_LINUX_LAPD = 177
 
-    LINKTYPE_ETHERNET = 1
 
-    @staticmethod
-    def translate_to_string(type_num):
-        if type_num == 0: return 'LINKTYPE_NULL'
-        if type_num == 1: return 'LINKTYPE_ETHERNET'
-        if type_num == 3: return 'LINKTYPE_AX25'
-        if type_num == 6: return 'LINKTYPE_IEEE802_5'
-        if type_num == 7: return 'LINKTYPE_ARCNET_BSD'
-        if type_num == 8: return 'LINKTYPE_SLIP'
-        if type_num == 9: return 'LINKTYPE_PPP'
-        if type_num == 10: return 'LINKTYPE_FDDI'
-        if type_num == 50: return 'LINKTYPE_PPP_HDLC'
-        if type_num == 51: return 'LINKTYPE_PPP_ETHER'
-        if type_num == 100: return 'LINKTYPE_ATM_RFC1483'
-        if type_num == 101: return 'LINKTYPE_RAW'
-        if type_num == 104: return 'LINKTYPE_C_HDLC'
-        if type_num == 105: return 'LINKTYPE_IEEE802_11'
-        if type_num == 107: return 'LINKTYPE_FRELAY'
-        if type_num == 108: return 'LINKTYPE_LOOP'
-        if type_num == 113: return 'LINKTYPE_LINUX_SLL'
-        if type_num == 114: return 'LINKTYPE_LTALK'
-        if type_num == 117: return 'LINKTYPE_PFLOG'
-        if type_num == 119: return 'LINKTYPE_IEEE802_11_PRISM'
-        if type_num == 122: return 'LINKTYPE_IP_OVER_FC'
-        if type_num == 123: return 'LINKTYPE_SUNATM'
-        if type_num == 127: return 'LINKTYPE_IEEE802_11_RADIOTAP'
-        if type_num == 129: return 'LINKTYPE_ARCNET_LINUX'
-        if type_num == 138: return 'LINKTYPE_APPLE_IP_OVER_IEEE1394'
-        if type_num == 139: return 'LINKTYPE_MTP2_WITH_PHDR'
-        if type_num == 140: return 'LINKTYPE_MTP2'
-        if type_num == 141: return 'LINKTYPE_MTP3'
-        if type_num == 142: return 'LINKTYPE_SCCP'
-        if type_num == 143: return 'LINKTYPE_DOCSIS'
-        if type_num == 144: return 'LINKTYPE_LINUX_IRDA'
-        if type_num == 163: return 'LINKTYPE_IEEE802_11_AVS'
-        if type_num == 165: return 'LINKTYPE_BACNET_MS_TP'
-        if type_num == 166: return 'LINKTYPE_PPP_PPPD'
-        if type_num == 169: return 'LINKTYPE_GPRS_LLC'
-        if type_num == 170: return 'LINKTYPE_GPF_T'
-        if type_num == 171: return 'LINKTYPE_GPF_F'
-        if type_num == 177: return 'LINKTYPE_LINUX_LAPD'
+def name_from_value(type_num):
+    if type_num == 0: return 'LINKTYPE_NULL'
+    if type_num == 1: return 'LINKTYPE_ETHERNET'
+    if type_num == 3: return 'LINKTYPE_AX25'
+    if type_num == 6: return 'LINKTYPE_IEEE802_5'
+    if type_num == 7: return 'LINKTYPE_ARCNET_BSD'
+    if type_num == 8: return 'LINKTYPE_SLIP'
+    if type_num == 9: return 'LINKTYPE_PPP'
+    if type_num == 10: return 'LINKTYPE_FDDI'
+    if type_num == 50: return 'LINKTYPE_PPP_HDLC'
+    if type_num == 51: return 'LINKTYPE_PPP_ETHER'
+    if type_num == 100: return 'LINKTYPE_ATM_RFC1483'
+    if type_num == 101: return 'LINKTYPE_RAW'
+    if type_num == 104: return 'LINKTYPE_C_HDLC'
+    if type_num == 105: return 'LINKTYPE_IEEE802_11'
+    if type_num == 107: return 'LINKTYPE_FRELAY'
+    if type_num == 108: return 'LINKTYPE_LOOP'
+    if type_num == 113: return 'LINKTYPE_LINUX_SLL'
+    if type_num == 114: return 'LINKTYPE_LTALK'
+    if type_num == 117: return 'LINKTYPE_PFLOG'
+    if type_num == 119: return 'LINKTYPE_IEEE802_11_PRISM'
+    if type_num == 122: return 'LINKTYPE_IP_OVER_FC'
+    if type_num == 123: return 'LINKTYPE_SUNATM'
+    if type_num == 127: return 'LINKTYPE_IEEE802_11_RADIOTAP'
+    if type_num == 129: return 'LINKTYPE_ARCNET_LINUX'
+    if type_num == 138: return 'LINKTYPE_APPLE_IP_OVER_IEEE1394'
+    if type_num == 139: return 'LINKTYPE_MTP2_WITH_PHDR'
+    if type_num == 140: return 'LINKTYPE_MTP2'
+    if type_num == 141: return 'LINKTYPE_MTP3'
+    if type_num == 142: return 'LINKTYPE_SCCP'
+    if type_num == 143: return 'LINKTYPE_DOCSIS'
+    if type_num == 144: return 'LINKTYPE_LINUX_IRDA'
+    if type_num == 163: return 'LINKTYPE_IEEE802_11_AVS'
+    if type_num == 165: return 'LINKTYPE_BACNET_MS_TP'
+    if type_num == 166: return 'LINKTYPE_PPP_PPPD'
+    if type_num == 169: return 'LINKTYPE_GPRS_LLC'
+    if type_num == 170: return 'LINKTYPE_GPF_T'
+    if type_num == 171: return 'LINKTYPE_GPF_F'
+    if type_num == 177: return 'LINKTYPE_LINUX_LAPD'
 
 # LINKTYPE_USER0-LINKTYPE-USER15	147-162	DLT_USER0-DLT_USER15	Reserved for private use; see above.
 

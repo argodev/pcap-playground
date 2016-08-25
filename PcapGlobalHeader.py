@@ -1,5 +1,5 @@
 from bitstring import BitArray, Bits
-from link_types import LinkTypes
+from constants import LinkTypes
 
 class PcapGlobalHeader(object):
     """
@@ -87,5 +87,5 @@ class PcapGlobalHeader(object):
         print "Timezone Offset: " + str(self.this_zone)
         print "Timestamp Accuracy: " + str(self.sig_figs)
         print "Snap Length: " + str(self.snap_len)
-        print "Data Link Type: " + LinkTypes.translate_to_string(self.network)
+        print "Data Link Type: " + LinkTypes.name_from_value(self.network)
 

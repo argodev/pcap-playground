@@ -1,5 +1,4 @@
 from bitstring import BitArray, Bits
-from link_types import LinkTypes
 
 class PcapPacketHeader(object):
     """
@@ -53,6 +52,6 @@ class PcapPacketHeader(object):
     
     def print_details(self):
         print "Timestamp Seconds: " + str(self.ts_sec)
-        print "Timestamp microSconds: " + str(self.ts_usec)
+        print "Timestamp microSeconds: " + str(self.ts_usec)
         print "Included Bytes: " + str(self.incl_len)
         print "Original Bytes: " + str(self.orig_len)

@@ -1,18 +1,9 @@
 from bitstring import BitArray, Bits
-from link_types import LinkTypes
-import constants
+from constants import ProtocolNumbers
+from layerthree import LayerThree
 
-class IPv4Header(object):
-    def __init__(self, bytes=None):
-        """
-        Constructor
-        Sets the default values for the fields
-        """
-        
-        if bytes is None:
-            self._bits = BitArray(length=192)
-        else:
-            self._bits = BitArray(bytes=bytes)            
+# http://www.tutorialspoint.com/ipv4/ipv4_packet_structure.htm
+class IPv4Datagram(LayerThree):
 
     @property
     def version(self):
@@ -21,6 +12,8 @@ class IPv4Header(object):
     @property
     def ihl(self):
         """Internet Header Length
+        
+        The number of 32-bit words in the header
         """
         return self._bits[4:8].uint
 
@@ -90,11 +83,26 @@ class IPv4Header(object):
             self._bits[152:160].uintle
         )
 
+    @property
+    def options(self):
+        if self.ihl > 5:
+            pass
+        else:
+            return None
+
+    @property
+    def data(self):
+        # start at 112, go to length - 32
+        data_start = self.ihl * 32
+        data_end = self._bits.length
+        return self._bits[data_start:data_end].tobytes()
+
+
     def print_details(self):
         print "\t********************************"
         print "\t IPv4"
         print "\t Version:         " + str(self.version)
-        print "\t Internet Header Length: " + str(self.ihl)
+        print "\t Header Length:   " + str(self.ihl)
         print "\t DSCP:            " + str(self.dscp)
         print "\t ECN:             " + str(self.ecn)
         print "\t Total Length:    " + str(self.total_length)
@@ -102,7 +110,7 @@ class IPv4Header(object):
         print "\t Flags:           " + str(self.flags)
         print "\t Fragment Offset: " + str(self.fragment_offset)
         print "\t Time To Live:    " + str(self.time_to_live)
-        print "\t Protocol:        " + constants.Protocol_Numbers.name_from_value(self.protocol) + " (" + str(self.protocol) + ")"
+        print "\t Protocol:        " + ProtocolNumbers.name_from_value(self.protocol) + " (" + str(self.protocol) + ")"
         print "\t Header Checksum: " + str(self.header_checksum)
         print "\t Source IP:       " + str(self.source_ip) + " (" + self.source_ip_string + ")"
         print "\t Destination IP:  " + str(self.destination_ip) + " (" + self.destination_ip_string + ")"
